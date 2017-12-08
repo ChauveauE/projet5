@@ -50,7 +50,7 @@
 			<legend>Ajouter une tâche</legend>
 			<form method="post" action="index.php">
 				<label for="tache" id="tache1"> Tâche: </label>
-				<input type="textarea" name="tache" id="tache" />
+				<input type="textarea" name="tache" id="tache" required />
 				<input type="submit" value="Enregistrer" id="valider" name="Enregistrer">
 			</form>
 		</fieldset>	

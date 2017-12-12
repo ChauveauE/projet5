@@ -1,0 +1,25 @@
+<!-- Projet 7: découverte composer-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Liste des tâches</title>
+</head>
+<body>
+	<h1>Listes des tâches</h1>
+	<ul>
+		{{# listes }}
+			<li>{{tache}}</li>
+		{{/ listes }}
+	</ul>
+	<fieldset class="marge">	
+		<!-- Formulaire d'ajout d'une tâche-->
+			<legend>Ajouter une tâche</legend>
+			<form method="post" action="index.php">
+				<label for="tache" id="tache1"> Tâche: </label>
+				<input type="textarea" name="tache" id="tache" required />
+				<input type="submit" value="Enregistrer" id="valider" name="Enregistrer">
+			</form>
+		</fieldset>	
+</body>
+</html> 

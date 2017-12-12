@@ -1,61 +1,34 @@
-<!-- Projet 5: Exercice maison à rendre pour le 10/12/2017-->
-<!-- Elodie CHAUVEAU -->
-<?php 
-	include 'connexion.php';
-?>
+<?php
+require_once 'vendor/autoload.php';
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" href="style.css" />
-	<title>Liste des tâches</title>
-</head>
+$m = new Mustache_Engine(array(
+    'loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/view'),
+));
 
-<body>
-	<!--Insertion de la tâche-->
-	<?php
-	if (isset($_POST['tache']) && $_POST['tache']!='')
-	{
-		$req = $bdd->prepare('INSERT INTO listetaches (tache) VALUES (:tache)');
-		$req->execute(array(
-			'tache' => $_POST['tache']));
-	}
+try
+{
+	$bdd = new PDO('mysql:host=localhost;dbname=liste;charset=utf8', 'root', '');
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
 
-	//suppression de la tâche
-	if (isset($_GET['id']) && isset($_GET['delete']))
-	{
-		$bdd->exec('DELETE FROM listetaches WHERE id='.$_GET['id']);
-	}
-	?>
+$listes = $bdd->query('SELECT * FROM listetaches');
 
-	<fieldset id="marge1">
-		<h1>Todo list</h1>
+if (isset($_POST['tache']) && $_POST['tache']!='')
+{
+	$req = $bdd->prepare('INSERT INTO listetaches (tache) VALUES (:tache)');
+	$req->execute(array(
+		'tache' => $_POST['tache']));
+}
 
-		<fieldset class='marge'>
-		<!-- Affichage de la liste des tâches-->
-			<legend>Liste des tâches</legend>		
-			<ul>
-				<?php
-					$listes = $bdd->query('SELECT * FROM listetaches');
-					foreach ($listes as $liste) {
-						echo "<a href = \"?id=".$liste["id"]."&delete\"> ⊠ </a>".$liste["tache"].""; ?><br><?php
-					}
-				?>
-			</ul>
-		</fieldset>	
+//suppression de la tâche
+if (isset($_GET['id']) && isset($_GET['delete']))
+{
+	$bdd->exec('DELETE FROM listetaches WHERE id='.$_GET['id']);
+}
 
-		<fieldset class="marge">	
-		<!-- Formulaire d'ajout d'une tâche-->
-			<legend>Ajouter une tâche</legend>
-			<form method="post" action="index.php">
-				<label for="tache" id="tache1"> Tâche: </label>
-				<input type="textarea" name="tache" id="tache" required />
-				<input type="submit" value="Enregistrer" id="valider" name="Enregistrer">
-			</form>
-		</fieldset>	
 
-	</fieldset>
-
-</body>
-</html>
+// loads template from `view/liste.mustache` and renders it.
+echo $m->render('liste', array('listes' => $listes));

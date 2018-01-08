@@ -9,14 +9,13 @@
 </head>
 <body>
 	<h1>Listes des tâches</h1>
+<fieldset id="marge1">
 	<ul>
 		{{# listes }}
-			
-			<li>
-					<input type="hidden" name="id" value="{{id}}" id="tachesup"/>
-					<button onclick="sup()">⊠</button> 
-				{{tache}}
-			</li>
+			<input type="hidden" name="id" value="{{id}}" id="tachesup"/>
+			<button onclick="sup()">X</button> 
+			{{tache}}
+			<br><br>
 		{{/ listes }}
 	</ul>
 
@@ -27,5 +26,6 @@
 			<input type="textarea" name="tache" id="tache" required />
 			<button onclick="insert()">Enregistrer</button>
 	</fieldset>	
+</fieldset>
 </body>
 </html> 

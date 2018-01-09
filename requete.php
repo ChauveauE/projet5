@@ -11,13 +11,13 @@ catch (Exception $e)
 if (isset($_POST['tache']) && $_POST['tache']!='')
 {
 	$req = $bdd->prepare('INSERT INTO listetaches (tache) VALUES (:tache)');
-	$req->execute(array(
-		':tache' => $_POST['tache']));
+	$req->execute(array(':tache' => $_POST['tache']));
 }
 
 //suppression de la tâche
 if (isset($_POST['id']) && isset($_POST['delete']))
 {
-	$bdd->exec('DELETE FROM listetaches WHERE id='.$_POST['id']);
+	$req = $bdd->prepare('DELETE FROM listetaches WHERE id=:id');
+	$req->execute(array(':id' => $_POST['id']));
 }
 ?>

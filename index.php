@@ -15,7 +15,6 @@ catch (Exception $e)
 }
 
 //affichage de la tâche
-//$listes = $bdd->query('SELECT * FROM listetaches');
 $req = "SELECT * FROM listetaches";
 $listes = $bdd->query($req);
 

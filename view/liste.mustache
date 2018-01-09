@@ -9,22 +9,23 @@
 </head>
 <body>
 	<h1>Listes des tâches</h1>
-<fieldset id="marge1">
-	<ul>
-		{{# listes }}
-			<button id="{{id}}" onclick="sup(this)">X</button> 
-			{{tache}}
-			<br><br>
-		{{/ listes }}
-	</ul>
-
-	<fieldset class="marge">	
+<fieldset id="marge1" class="margeGlobal">
+	<br>
+	<fieldset class="marge margeGlobal">	
 		<!-- ajout d'une tâche-->
 		<legend>Ajouter une tâche</legend>
 			<label for="tache" id="tache1"> Tâche: </label>
 			<input type="textarea" name="tache" id="tache" required />
-			<button onclick="insert()">Enregistrer</button>
+			<button onclick="insert()" class="enregistrer">Enregistrer</button>
 	</fieldset>	
+	<br>
+	<ul>
+		{{# listes }}
+			<button id="{{id}}" onclick="sup(this)" class="buttonX">X</button> 
+			{{tache}}
+			<br><br>
+		{{/ listes }}
+	</ul>
 </fieldset>
 </body>
 </html> 

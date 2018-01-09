@@ -15,21 +15,26 @@ h1
 	font-size: 40px;
 }
 
-.tachesup
-{
-
-}
-
 #marge1
 {
- 	margin-left: 100px;
-	margin-right: 300px;
 	background-color: #F0E68C;
 }
 .marge
 {
 	background-color: #FFFACD;
 	border-radius: 20px;
+}
+.margeGlobal
+{
+	margin-right: auto;
+	margin-left: auto;
+	width: 75%;
+}
+.enregistrer
+{
+	border-radius: 5px;
+	margin-left: 30px;	
+	background-color: #9ACD32;
 }
 #tache
 {
@@ -39,11 +44,10 @@ h1
 {
 	margin-left: 50px;
 }
-
-#valider
+.buttonX
 {
-	border-radius: 5px;
-	margin-left: 50px;
+	border-radius: 20px;
+	background-color: #DC143C;
 }
 a
 {

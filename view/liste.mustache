@@ -12,8 +12,7 @@
 <fieldset id="marge1">
 	<ul>
 		{{# listes }}
-			<input type="hidden" name="id" value="{{id}}" id="tachesup"/>
-			<button onclick="sup()">X</button> 
+			<button id="{{id}}" onclick="sup(this)">X</button> 
 			{{tache}}
 			<br><br>
 		{{/ listes }}

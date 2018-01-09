@@ -8,12 +8,12 @@ function insert()
 	window.location.href='.';
 }
 
-function sup()
+function sup(e)
 {
-	var sup = document.getElementById('tachesup').value;
+	var id = e.id;
 	var req = new XMLHttpRequest();
 	req.open('POST', 'requete.php', false);
 	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-	req.send('id='+sup+'&delete');
+	req.send('id='+id+'&delete');
 	window.location.href='.';
 }
